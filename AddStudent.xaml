@@ -1,0 +1,108 @@
+﻿<Window x:Class="Project.AddStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project" d:DataContext="{d:DesignInstance Type=local:MainWindowVM}"
+        mc:Ignorable="d"
+        Title="AddStudent"  Height="600" Width="500"
+        WindowStyle="None"
+        Background="Transparent">
+    
+    <Border Background="White"
+            CornerRadius="8">
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Start: Button Close | Restore | Minimize -->
+            <Border CornerRadius="8" Grid.Row="0" Background="{DynamicResource PrimaryBackgroundColor}">
+                <StackPanel VerticalAlignment="Top">
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft">
+                        <Button x:Name="btnClose" Style="{StaticResource CloseButtonsStyle}" Click="btnClose_Click"/>
+                        <Button x:Name="btnMax" Style="{StaticResource MaximizeButtonsStyle}" Click="btnMax_Click"/>
+                        <Button x:Name="btnMin" Style="{StaticResource MinimizeButtonsStyle}" Click="btnMin_Click"/>
+                    </StackPanel>
+                    <TextBlock Foreground="{DynamicResource PrimaryTextColor}" FontSize="20" Margin="0 -10 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="Add Student" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <Border CornerRadius="8" Grid.Row="1" Background="{DynamicResource PrimaryBlueColor}" Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="26"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Grid.Row="0" Width="90" Height="90" Stroke="White" StrokeThickness="3" StrokeDashArray="1" Margin="0 30 0 0" >
+                            <Rectangle.Fill>
+
+                                <ImageBrush ImageSource="{Binding Image}"/>
+
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Content="Add a Profile Picture" 
+                                Background="Transparent"
+                                Command="{Binding AddImageCommand, UpdateSourceTrigger=PropertyChanged}"
+                                Foreground="White"
+                                BorderThickness="0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" VerticalAlignment="Center" Margin="100 0 100 0" Height="auto" Width="auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+
+                        </Grid.RowDefinitions>
+
+
+                        <TextBlock Grid.Row="0" Text="First Name" Foreground="WhiteSmoke"/>
+                        <TextBlock Grid.Row="1" Text="Last Name" Foreground="White"/>
+                        <TextBlock Grid.Row="2" Text="Age" Foreground="White"/>
+                        <TextBlock Grid.Row="3" Text="Date of Birth" Foreground="White"/>
+                        <TextBlock Grid.Row="4" Text="GPA" Foreground="White"/>
+
+
+
+                        <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0"  Margin="0 5"/>
+                        <TextBox  Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1"  Margin="0 5" MinWidth="140"/>
+                        <TextBox Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2"  Margin="0 5"/>
+                        <TextBox Text="{Binding DateofBirth, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="3"  Margin="0 5"/>
+                        <TextBox  Text="{Binding Gpa, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4" Margin="0 5"/>
+
+                    </Grid>
+                    <StackPanel Grid.Row="2">
+                        <Button Style="{StaticResource mainButton}" Command="{Binding CreateStudentCommand}" Content="Save" HorizontalAlignment="Center" Margin="30"/>
+                    </StackPanel>
+
+
+                </Grid>
+            </Border>
+
+        </Grid>
+
+    </Border>
+</Window>
+
