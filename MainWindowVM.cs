@@ -104,19 +104,31 @@ namespace Project
         }
         public MainWindowVM()
         {
+            
             Student std1 = new Student()
             {
-                FirstName = "mohamed",
-                LastName = "Arshad"
+                FirstName = "ahamed",
+                LastName = "minhaj",
+                Age = 23,
+                Image = new BitmapImage(new Uri("/Images/2.png", UriKind.Relative)),
+                DateofBirth = "1998/10/22",
+                GPA = 3.2
+
 
             };
-            StudentsList.Add(std1);
 
+
+            BitmapImage bitmapImage = new BitmapImage(new Uri("/Images/3.png", UriKind.Relative));
+            StudentsList.Add(new Student("Mohamed","Arshad",23,"2000/5/2",bitmapImage,3.4));
+            StudentsList.Add(std1);
             Student std2 = new Student()
             {
                 FirstName = "Tom",
-                LastName = "Brown"
-
+                LastName = "Brown",
+                Age = 24,
+                Image = new BitmapImage(new Uri("/Images/5.png", UriKind.Relative)),
+                DateofBirth = "1999/08/22",
+                GPA = 3.7
             };
             StudentsList.Add(std2);
 
